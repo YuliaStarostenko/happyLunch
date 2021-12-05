@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head::head"></head>
+<body>
+<div class="wrapper">
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+
+<section class="top-container">
+    <div class="container-fluid">
+        <h1 class="text-center text-black mt-4">Какво ще хапнем днес,
+            <span
+                    sec:authorize="isAuthenticated()"
+                    sec:authentication="name">
+            Name of the logged in user.
+        </span>
+            <span>?</span>
+        </h1>
+    </div>
+</section>
+
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <h5>
+                    <a th:href="@{/restaurants/all}" class="link-dark">ALL RESTAURANTS</a>
+                </h5>
+
+            </div>
+            <img src="https://res.cloudinary.com/zhulbars/image/upload/c_scale,h_200,w_250/v1637875222/1_wttddi.jpg" class="card-img-top" alt="All">
+
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5>
+                    <a th:href="@{/menu/children}" class="link-dark">FOR PARENTS</a>
+                </h5>
+
+            </div>
+            <img src="https://res.cloudinary.com/zhulbars/image/upload/c_scale,h_200,w_250/v1637875579/kids-at-lunch_twyti6.jpg" class="card-img-top" alt="Children">
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5>
+                    <a th:href="@{/recipes/details}" id="loadRecipe" class="link-dark">RECIPE OF THE DAY</a>
+                </h5>
+
+            </div>
+            <img src="https://res.cloudinary.com/zhulbars/image/upload/c_scale,h_200,w_250/v1637875773/recipe_xavexx.jpg" class="card-img-top" alt="Recipe">
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>

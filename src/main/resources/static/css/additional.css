@@ -1,0 +1,17 @@
+body {
+    background-image: url("https://res.cloudinary.com/zhulbars/image/upload/v1638530629/slider-02_xizqq7.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #57dde2;
+
+}
+
+.my-error {
+    text-align: center;
+    margin: 0;
+    padding-top: 250px;
+    border: red;
+    font-family: 'Sofia';font-size: 22px;
+}

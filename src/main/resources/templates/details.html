@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head::head"></head>
+
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+<form  th:action="@{/restaurants/like/{id}(id = ${restaurant.getId()})}"
+       th:method="POST">
+<!--
+<input type="hidden" name="restaurantId" id="restaurantId" th:value="${restaurant.id}">
+
+-->
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-7">
+            <div class="profile-card p-3 py-4">
+                <div class="text-center"><img th:src="*{restaurant.getPicture()}" width="350" class="rounded"></div>
+                <div class="text-center mt-3" th:object="${restaurant}">
+
+                    <h4 class="fw-bolder">
+                        <span th:text="*{name}">Butlers</span>
+                    </h4>
+                    <h5 class="mt-2 mb-0">Address: <span th:text="*{address}">Bogoridi str</span></h5>
+                    <h5 class="mt-2 mb-0">Area: <span th:text="*{area.name()}">Center</span></h5>
+                    <h5 class="mt-2 mb-0">Phone number: <span th:text="*{phoneNumber}">0995875693</span></h5>
+                    <h5 class="mt-2 mb-0">Description:</h5>
+                    <h5 >
+                    <span th:text="*{description}">Bla-bla-bla</span>
+                    </h5>
+                    <h5 class="mt-2 mb-0">Likes: <span th:text="*{likes}">58</span></h5>
+                    <div class="buttons">
+                        <button class="btn btn-primary px-4" th:href="@{/restaurants/like/{id}(id = *{id})}" >LIKE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<div class="center">
+
+<form th:action="@{/restaurants/{id}(id=*{id})}" th:method="delete">
+    <input type="submit" sec:authorize="hasRole('ADMIN')" class="btn btn-primary px-4" value="Delete"/>
+</form>
+
+</div>
+<script th:src="@{/js/comments.js}"></script>
+</div>
+
+</body>
+</html>

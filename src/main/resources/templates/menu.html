@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:width="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/head::head"></head>
+
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-7">
+            <div class="profile-card p-3 py-4">
+                <div class="text-center mt-3">
+    <h5>***** МЕНЮ ЗА ДНЕС *****</h5>
+
+    <h6>***** Приятен апетит от ресторант <span th:text="${restaurant.name}"></span>! *****</h6>
+
+    <table class="table table-success table-striped" >
+        <thead>
+        <tr>
+            <th scope="col">Име на ястие</th>
+            <th scope="col">Цена, лв</th>
+            <th scope="col">Тегло, гр</th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr th:each="m : ${menus}" th:object="${m}">
+            <td th:text="*{mealName}">Mark</td>
+            <td th:text="*{price}">Otto</td>
+            <td th:text="*{weight}">@mdo</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+    </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

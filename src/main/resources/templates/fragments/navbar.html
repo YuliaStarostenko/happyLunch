@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head></head>
+<body>
+
+<div th:fragment="navbar">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" ><img alt="logo picture" src="/images/logo-3.png" class="logo"></a>
+        <a class="navbar-brand mb-0 h1 fw-bolder" href="/home">  Happy Lunch </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link active" th:href="@{/home}">Home</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link active" th:href="@{/restaurants/all}">All Restaurants</a>
+                </li>
+
+                <li class="nav-item">
+                     <h6>Temperature: <span id="box-a-temp">27</span> <img id="box-a-img" src="/images/sun.png" height="50px" alt=""></h6>
+                </li>
+                <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link active" th:href="@{/restaurants/add}">Add restaurant</a>
+                </li>
+                <li class="nav-item dropdown" sec:authorize="hasRole('RESTAURANT')">
+                    <a class="nav-link active" th:href="@{/menus/add}">Add menu</a>
+                </li>
+                <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link active" th:href="@{/statistics}">Statistics</a>
+                </li>
+
+
+                <!-- EO: Logout start -->
+
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link active" th:href="@{/users/register}">Register</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link active" th:href="@{/users/login}">Login</a>
+                </li>
+
+            </ul>
+            <ul class="topnav-right">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <div class="float-end">
+                        <form th:action="@{/users/logout}" th:method="post">
+                            <input class="btn btn-link nav-link" type="submit" value="Logout">
+                        </form>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script th:src="@{/js/weather.js}"></script>
+</div>
+
+</body>
+</html>

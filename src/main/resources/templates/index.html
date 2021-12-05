@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head::head"></head>
+
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+
+<div class="container-fluid">
+    <h1 class="text-center text-black mt-4">Какво ще хапнем днес,
+        <span
+                sec:authorize="isAuthenticated()"
+                sec:authentication="name">
+            Name of the logged in user.
+        </span>
+        <span sec:authorize="isAuthenticated()"> ? </span>
+        <span sec:authorize="!isAuthenticated()">
+            Приятелю?
+        </span>
+    </h1>
+</div>
+<div class="container-fluid">
+    <h2 class="text-center text-black mt-5">
+        <span sec:authorize="!isAuthenticated()">
+            Влез в профила си за да разгледаш днешните предложения!
+        </span>
+    </h2>
+</div>
+
+
+
+
+
+</body>
+
+
+</html>

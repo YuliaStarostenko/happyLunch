@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head::head"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar">
+    Navbar
+</div>
+
+<div class="container">
+    <h2 class="text-center text-black">Add restaurant</h2>
+    <form
+            th:action="@{/restaurants/add}"
+            th:method="POST"
+            th:object="${restaurantAddBindModel}"
+          class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+        <div>
+            <div class="form-group">
+                <label for="inputName" class="col-form-label text-white">Name</label>
+            </div>
+            <div class="form-group">
+                <input name="name"
+                       th:field="*{name}"
+                       th:errorclass="'is-invalid bg-danger'"
+                       required minlength="1" maxlength="50"
+                       type="text"
+                       id="inputName"
+                       class="form-control"
+                       aria-describedby="inputNameError">
+                <small id="inputNameError"  th:errors="*{name}"
+                       class="invalid-feedback rounded">Name length must be between 1 and 50 symbols</small>
+
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="inputName" class="col-form-label text-white">Address</label>
+            </div>
+            <div class="form-group">
+                <input name="address"
+                       th:field="*{address}"
+                       th:errorclass="'is-invalid bg-danger'"
+                       required minlength="1" maxlength="150"
+                       type="text"
+                       id="inputAddress"
+                       class="form-control"
+                       aria-describedby="inputAddressError">
+                <small id="inputAddressError"  th:errors="*{address}"
+                       class="invalid-feedback rounded">Address length must be between 1 and 150 symbols</small>
+
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="area" class="text-white">Area</label>
+                <select th:field="*{area}"
+                        th:errorclass="'is-invalid bg-danger'" id="area" class="custom-select">
+                    <option value="" selected>Select area</option>
+                    <option th:each="a : ${T(com.example.happylunch.model.enums.AreaNameEnum).values()}" th:value="${a}" th:text="${a}">Select area</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="inputPhoneNumber" class="col-form-label text-white">Phone Number</label>
+            </div>
+            <div class="form-group">
+                <input name="phoneNumber"
+                       th:field="*{phoneNumber}"
+                       th:errorclass="'is-invalid bg-danger'"
+                       required minlength="10" maxlength="50"
+                       type="text"
+                       id="inputPhoneNumber"
+                       class="form-control"
+                       aria-describedby="inputPhoneNumberError">
+                <small id="inputPhoneNumberError"  th:errors="*{phoneNumber}"
+                       class="invalid-feedback rounded">Phone number length must be minimum 10 symbols</small>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="inputPictures" class="col-form-label text-white">Picture</label>
+            </div>
+            <div class="form-group">
+                <input name="pictures"
+                       th:field="*{pictures}"
+                       type="text"
+                       id="inputPictures"
+                       class="form-control">
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="inputDescription" class="col-form-label text-white">Description</label>
+            </div>
+            <div class="form-group">
+                <input name="description"
+                       th:field="*{description}"
+                       type="text"
+                       id="inputDescription"
+                       class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Add Restaurant"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
