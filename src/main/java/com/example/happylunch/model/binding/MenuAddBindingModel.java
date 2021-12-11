@@ -5,6 +5,7 @@ import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class MenuAddBindingModel {
@@ -29,6 +30,7 @@ public class MenuAddBindingModel {
     }
 
     @NotBlank
+    @Size(min = 1, max = 100)
     public String getMealName() {
         return mealName;
     }
@@ -61,6 +63,7 @@ public class MenuAddBindingModel {
 
 
     @NotBlank
+    @Size(min = 1, max = 50)
     public String getRestaurantName() {
         return restaurantName;
     }

@@ -10,7 +10,7 @@
 </div>
 
 <div class="container">
-    <h2 class="text-center text-black">Add menu</h2>
+    <h2 class="text-center text-black">Add new menu</h2>
     <form
             th:action="@{/menus/add}"
             th:method="POST"
@@ -18,65 +18,77 @@
             class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
         <div>
             <div class="form-group">
-                <label for="inputMealName" class="col-form-label text-white">Meal name</label>
+                <label for="inputName" class="col-form-label text-white">Meal name</label>
             </div>
             <div class="form-group">
                 <input name="mealName"
                        th:field="*{mealName}"
-                       th:errorclass="'is-invalid bg-danger'"
+                       th:errorclass="is-invalid"
                        required minlength="1" maxlength="100"
                        type="text"
-                       id="inputMealName"
+                       id="inputName"
                        class="form-control"
-                       aria-describedby="inputMealNameError">
-                <small id="inputMealNameError"  th:errors="*{mealName}"
+                       aria-describedby="inputNameError">
+                <small id="inputNameError"  th:errors="*{mealName}"
                        class="invalid-feedback rounded">Meal name length must be between 1 and 100 symbols</small>
+
             </div>
         </div>
+
         <div>
             <div class="form-group">
-                <label for="inputWeight" class="col-form-label text-white">Weight of the dish:</label>
+                <label for="inputWeight" class="col-form-label text-white">Meal weight</label>
             </div>
             <div class="form-group">
-                <input name="weight"
+                <input name="mealWeight"
                        th:field="*{weight}"
+                       th:errorclass="is-invalid"
+                       required minlength="1" maxlength="100"
                        type="text"
                        id="inputWeight"
-                       class="form-control">
+                       class="form-control"
+                       aria-describedby="inputWeightError">
+                <small id="inputWeightError"  th:errors="*{weight}"
+                       class="invalid-feedback rounded">Meal weight length must be between 1 and 100 symbols</small>
+
             </div>
         </div>
+
         <div>
             <div class="form-group">
-                <label for="inputPrice" class="col-form-label text-white">Price in lv:</label>
+                <label for="inputPrice" class="col-form-label text-white">Meal price</label>
             </div>
             <div class="form-group">
-                <input name="price"
+                <input name="mealPrice"
                        th:field="*{price}"
-                       th:errorclass="'is-invalid bg-danger'"
-                       required min="1"
+                       th:errorclass="is-invalid"
+                       required minlength="1" maxlength="100"
                        type="text"
                        id="inputPrice"
                        class="form-control"
                        aria-describedby="inputPriceError">
                 <small id="inputPriceError"  th:errors="*{price}"
-                       class="invalid-feedback rounded">Price should be a positive number</small>
+                       class="invalid-feedback rounded">Meal price should be positive</small>
+
             </div>
         </div>
+
         <div>
             <div class="form-group">
-                <label for="inputRestaurantName" class="col-form-label text-white">Restaurant Name:</label>
+                <label for="inputRestaurant" class="col-form-label text-white">Restaurant name</label>
             </div>
             <div class="form-group">
                 <input name="restaurantName"
                        th:field="*{restaurantName}"
-                       th:errorclass="'is-invalid bg-danger'"
+                       th:errorclass="is-invalid"
                        required minlength="1" maxlength="50"
                        type="text"
-                       id="inputRestaurantName"
+                       id="inputRestaurant"
                        class="form-control"
-                       aria-describedby="inputPhoneNumberError">
-                <small id="inputPhoneNumberError"  th:errors="*{restaurantName}"
-                       class="invalid-feedback rounded">Restaurant name length must be between 1 and 50 symbols</small>
+                       aria-describedby="inputRestaurantError">
+                <small id="inputRestaurantError"  th:errors="*{restaurantName}"
+                       class="invalid-feedback rounded">Restaurant name must be valid</small>
+
             </div>
         </div>
 

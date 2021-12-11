@@ -66,6 +66,7 @@ public class MenuServiceImpl implements MenuService {
         var newMenu = modelMapper.map(menuServiceModel, MenuEntity.class);
 
       var restaurantName = menuServiceModel.getRestaurantName();
+
       var restaurant = restaurantRepository.findByName(restaurantName);
 
       newMenu.setRestaurant(restaurant);

@@ -2,6 +2,7 @@ package com.example.happylunch.web;
 
 import com.example.happylunch.model.binding.MenuAddBindingModel;
 import com.example.happylunch.model.binding.RestaurantAddBindingModel;
+import com.example.happylunch.model.entity.RestaurantEntity;
 import com.example.happylunch.service.MenuService;
 import com.example.happylunch.service.RestaurantService;
 import com.example.happylunch.service.impl.HappyLunchUser;
@@ -68,20 +69,21 @@ public class MenuController {
         return "menu-add";
     }
 
+
     @PostMapping("/menus/add")
     public String addMenu(@Valid MenuAddBindingModel menuAddBindingModel,
                                 BindingResult bindingResult,
                                 RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
+        RestaurantEntity restaurant = restaurantService.findByRestaurantName(menuAddBindingModel.getRestaurantName());
+        if (bindingResult.hasErrors() || restaurant == null) {
             redirectAttributes
                     .addFlashAttribute("menuAddBindingModel", menuAddBindingModel)
                     .addFlashAttribute("org.springframework.validation.BindingResult.menuAddBindingModel", bindingResult);
-
             return "redirect:/menus/add";
         }
 
         menuService.addMenu(menuAddBindingModel);
 
-        return "redirect:/home";
+        return "redirect:/restaurants/all";
     }
 }
