@@ -66,7 +66,7 @@
                         th:errorclass="is-invalid"
                         type="text"
                         class="form-control"
-                        placeholder="Phone number"/>
+                        placeholder="Phone number (format: 0888888888)"/>
                 <p class="invalid-feedback errors alert alert-danger">
                 </p>
             </div>
@@ -75,7 +75,7 @@
             <div class="form-group col-md-6 mb-3">
                 <label for="role" class="text-white font-weight-bold">Role</label>
                 <select th:field="*{role}"
-                        th:errorclass="'is-invalid bg-danger'" id="role" class="custom-select">
+                        th:errorclass="is-invalid" id="role" class="custom-select">
                     <option value="" selected>Select role</option>
                     <option value="USER"> USER </option>
                     <option value="RESTAURANT"> RESTAURANT </option>

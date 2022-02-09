@@ -38,8 +38,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerAndLoginUser(UserRegisterServiceModel userRegisterServiceModel) {
 
-        //RoleEntity userRole = roleRepository.findByRole(RoleNameEnum.USER);
-
         RoleEntity userRole = roleRepository.findByRole(userRegisterServiceModel.getRole());
 
         UserEntity newUser = new UserEntity();

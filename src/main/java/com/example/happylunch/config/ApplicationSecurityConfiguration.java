@@ -43,7 +43,6 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                         loginPage("/users/login").
                 // this is the name of the <input..> in the login form where the user enters her email/username/etc
                 // the value of this input will be presented to our User details service
-                // those that want to name the input field differently, e.g. email may change the value below
                         usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
                 // the name of the <input...> HTML filed that keeps the password
                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
@@ -74,11 +73,5 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 userDetailsService(userDetailsService).
                 passwordEncoder(passwordEncoder);
 
-        // registration:
-        // topsecretpass -> password encoder -> kfskjhfkjshfkjdshfkjdsh (hashed pwd)
-
-        // login:
-        // (username, raw_password) ->
-        // password_encoder.matches(raw_password, hashed_pwd)
-    }
+          }
 }

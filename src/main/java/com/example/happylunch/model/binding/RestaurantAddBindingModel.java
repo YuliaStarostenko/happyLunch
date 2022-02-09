@@ -4,10 +4,7 @@ import com.example.happylunch.model.enums.AreaNameEnum;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class RestaurantAddBindingModel {
 
@@ -65,7 +62,8 @@ public class RestaurantAddBindingModel {
     }
 
     @NotBlank
-    @Size(min = 10)
+    @Pattern(regexp="^\\d{10}$")
+    @Size(min = 10, max = 10)
     public String getPhoneNumber() {
         return phoneNumber;
     }

@@ -6,6 +6,7 @@ import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class UserRegisterBindingModel {
@@ -23,7 +24,9 @@ public class UserRegisterBindingModel {
     @Email
     private String email;
 
-
+    @NotBlank
+    @Pattern(regexp="^\\d{10}$", message = "Please use digits only")
+    @Size(min = 10, max = 10)
     private String phoneNumber;
 
     private RoleNameEnum role;
